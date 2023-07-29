@@ -6,7 +6,7 @@ const RootLayout = ({ children }) => {
   return (
     <Box>
       <Header />
-      <Container maxWidth="xl" sx={{ py: 3, minHeight: "80vh" }} >
+      <Container maxWidth="xl" sx={{ py: 3, minHeight: "100vh" }} >
         {children}
       </Container>
       <Footer />
