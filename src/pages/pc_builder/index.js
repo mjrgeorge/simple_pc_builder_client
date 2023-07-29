@@ -2,23 +2,28 @@ import RootLayout from "@/components/layouts/RootLayout"
 import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-import { Button, Container, IconButton, Paper, Stack } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
+import { Button, Container, ListItemText, Paper, Stack } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import { useRouter } from "next/router";
 import CardItem from "./CardItem";
+import { useSelector } from 'react-redux';
 
 const PcBuilderPage = () => {
   const router = useRouter();
+  const { products } = useSelector((state) => state.cart);
 
   const handleNavigate = (route) => {
     router.push(route);
   };
+
+  const isProcessor = products.filter(product => product.category === 'Processor')?.length > 0;
+  const isMotherboard = products.filter(product => product.category === 'Motherboard')?.length > 0;
+  const isRAM = products.filter(product => product.category === 'RAM')?.length > 0;
+  const isPowerSupplyUnit = products.filter(product => product.category === 'Power Supply Unit')?.length > 0;
+  const isStorageDevice = products.filter(product => product.category === 'Storage Device')?.length > 0;
+  const isMonitor = products.filter(product => product.category === 'Monitor')?.length > 0;
 
   return (
     <Container maxWidth="md">
@@ -30,7 +35,7 @@ const PcBuilderPage = () => {
           >
             PC Builder
           </Typography>
-          <Button variant="contained" color="error">Add To Builder</Button>
+          <Button variant="contained" color="error" disabled={!(isProcessor === true && isMotherboard === true && isRAM === true && isPowerSupplyUnit === true && isStorageDevice === true && isMonitor === true)}>Add To Builder</Button>
         </Stack>
         <List
           sx={{
@@ -47,7 +52,15 @@ const PcBuilderPage = () => {
           }>
             <ListItemText primary="Processor" secondary="Required" />
           </ListItem>
-          <CardItem />
+          <Divider component="li" variant="inset" />
+          {!products?.filter(product => product.category === 'Processor')?.length && <Typography color="red" align="center" py={3}>Empty</Typography>}
+          {
+            products
+              ?.filter(product => product.category === 'Processor')
+              ?.map(product => (
+                <CardItem key={product?._id} product={product} />
+              ))
+          }
           <Divider />
         </List >
         <List
@@ -65,7 +78,15 @@ const PcBuilderPage = () => {
           }>
             <ListItemText primary="Motherboard" secondary="Required" />
           </ListItem>
-          <CardItem />
+          <Divider component="li" variant="inset" />
+          {!products?.filter(product => product.category === 'Motherboard')?.length && <Typography color="red" align="center" py={3}>Empty</Typography>}
+          {
+            products
+              ?.filter(product => product.category === 'Motherboard')
+              ?.map(product => (
+                <CardItem key={product?._id} product={product} />
+              ))
+          }
           <Divider />
         </List>
         <List
@@ -83,7 +104,15 @@ const PcBuilderPage = () => {
           }>
             <ListItemText primary="RAM" secondary="Required" />
           </ListItem>
-          <CardItem />
+          <Divider component="li" variant="inset" />
+          {!products?.filter(product => product.category === 'RAM')?.length && <Typography color="red" align="center" py={3}>Empty</Typography>}
+          {
+            products
+              ?.filter(product => product.category === 'RAM')
+              ?.map(product => (
+                <CardItem key={product?._id} product={product} />
+              ))
+          }
           <Divider />
         </List>
         <List
@@ -101,7 +130,15 @@ const PcBuilderPage = () => {
           }>
             <ListItemText primary="Power Supply Unit" secondary="Required" />
           </ListItem>
-          <CardItem />
+          <Divider component="li" variant="inset" />
+          {!products?.filter(product => product.category === 'Power Supply Unit')?.length && <Typography color="red" align="center" py={3}>Empty</Typography>}
+          {
+            products
+              ?.filter(product => product.category === 'Power Supply Unit')
+              ?.map(product => (
+                <CardItem key={product?._id} product={product} />
+              ))
+          }
           <Divider />
         </List>
         <List
@@ -119,7 +156,15 @@ const PcBuilderPage = () => {
           }>
             <ListItemText primary="Storage Device" secondary="Required" />
           </ListItem>
-          <CardItem />
+          <Divider component="li" variant="inset" />
+          {!products?.filter(product => product.category === 'Storage Device')?.length && <Typography color="red" align="center" py={3}>Empty</Typography>}
+          {
+            products
+              ?.filter(product => product.category === 'Storage Device')
+              ?.map(product => (
+                <CardItem key={product?._id} product={product} />
+              ))
+          }
           <Divider />
         </List>
         <List
@@ -137,7 +182,15 @@ const PcBuilderPage = () => {
           }>
             <ListItemText primary="Monitor" secondary="Required" />
           </ListItem>
-          <CardItem />
+          <Divider component="li" variant="inset" />
+          {!products?.filter(product => product.category === 'Monitor')?.length && <Typography color="red" align="center" py={3}>Empty</Typography>}
+          {
+            products
+              ?.filter(product => product.category === 'Monitor')
+              ?.map(product => (
+                <CardItem key={product?._id} product={product} />
+              ))
+          }
           <Divider />
         </List>
       </Paper>

@@ -1,12 +1,21 @@
 import RootLayout from '@/components/layouts/RootLayout';
+import { addToCart } from '@/redux/cart/cartSlice';
 import { Box, Button, CardActionArea, CardActions, Grid, Rating } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 
 const ProductByCategoryPage = ({ productsByCategory }) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product));
+        router.push('/pc_builder');
+    }
     return (
         <Box>
             {
@@ -57,11 +66,9 @@ const ProductByCategoryPage = ({ productsByCategory }) => {
                                                 </CardActionArea>
                                             </Link>
                                             <CardActions>
-                                                <Link href={`/product/${product?._id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                                    <Button size="small" color="primary">
-                                                        Details
-                                                    </Button>
-                                                </Link>
+                                                <Button variant='contained' color="error" fullWidth onClick={() => handleAddToCart(product)}>
+                                                    Select
+                                                </Button>
                                             </CardActions>
                                         </Card>
                                     </Grid>

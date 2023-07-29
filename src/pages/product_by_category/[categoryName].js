@@ -58,7 +58,7 @@ const ProductByCategoryPage = ({ productsByCategory }) => {
                                             </Link>
                                             <CardActions>
                                                 <Link href={`/product/${product?._id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                                                    <Button size="small" color="primary">
+                                                    <Button color="primary">
                                                         Details
                                                     </Button>
                                                 </Link>
