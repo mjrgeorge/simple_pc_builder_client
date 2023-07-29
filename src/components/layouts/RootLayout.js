@@ -1,15 +1,15 @@
 import Header from '../Header';
 import Footer from '../Footer';
-import { Box } from '@mui/material';
-const RootLayout = ({children}) => {
+import { Box, Container } from '@mui/material';
+const RootLayout = ({ children }) => {
 
   return (
     <Box>
-      <Header/>
-      <Box  minHeight="80vh">
-      {children}
-      </Box>
-      <Footer/>
+      <Header />
+      <Container maxWidth="xl" sx={{ py: 3, minHeight: "80vh" }} >
+        {children}
+      </Container>
+      <Footer />
     </Box>
   );
 };
