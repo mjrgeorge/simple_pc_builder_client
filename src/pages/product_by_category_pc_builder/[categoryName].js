@@ -95,17 +95,7 @@ ProductByCategoryPage.getLayout = function getLayout(page) {
     )
 }
 
-export const getStaticPaths = async () => {
-    const res = await fetch(`http://localhost:5000/products`);
-    const products = await res.json();
-
-    const paths = products.data.map((product) => ({
-        params: { categoryName: product.category }
-    }));
-    return { paths, fallback: false }
-}
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const { params } = context;
     const res = await fetch(`http://localhost:5000/products/${params?.categoryName}`);
     const data = await res.json();

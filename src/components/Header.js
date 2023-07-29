@@ -102,9 +102,11 @@ export default function MenuAppBar() {
                 </Link>
               </MenuItem>
             </Menu>
-            <Button color="inherit" variant="outlined">
-              Pc Builder
-            </Button>
+            <Link href={`/pc_builder`} style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Button color="inherit" variant="outlined">
+                Pc Builder
+              </Button>
+            </Link>
           </div>
         </Toolbar>
       </AppBar>

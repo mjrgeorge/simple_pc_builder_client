@@ -5,7 +5,7 @@ import Link from '@mui/material/Link';
 
 const Footer = function () {
     return (
-        <Grid container direction="row" justifyContent="space-between" alignItems="center" spacing={3}>
+        <Grid container direction="row" justifyContent="space-between" alignItems="center" spacing={3} sx={{ py: 3 }}>
             <Grid item xs={12} md={6}>
                 <Typography variant="body2" color="inherit" align="center">
                     {'Copyright © '} {new Date().getFullYear()}{' '}

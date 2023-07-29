@@ -44,7 +44,7 @@ const ProductDetailsPage = ({ product }) => {
                                 Status: {product?.status}
                             </Typography>
                             <Typography variant="h6" gutterBottom>
-                                Total Price: {product?.price}
+                                Price: {product?.price}
                                 ৳
                             </Typography>
                             <Typography component="legend">

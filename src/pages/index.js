@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import RootLayout from '@/components/layouts/RootLayout';
-import { Box, Button, CardActionArea, CardActions, Grid } from '@mui/material';
+import { Box, Button, CardActionArea, CardActions, Grid, Rating } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -34,21 +34,20 @@ const HomePage = ({ allProducts }) => {
                             alt={product?.product_name}
                           />
                           <CardContent>
-                            <Typography gutterBottom variant="h6" component="div">
+                            <Typography variant="h5" gutterBottom>
                               {product?.product_name}
                             </Typography>
-                            <Typography gutterBottom variant="h5" component="div">
-                              {product?.category}
+                            <Typography gutterBottom variant="h6">
+                              Category:{product?.category}
                             </Typography>
-                            <Typography gutterBottom variant="h6" component="div">
-                              {product?.status}
+                            <Typography gutterBottom>
+                              Status: {product?.status}
                             </Typography>
-                            <Typography gutterBottom variant="h4" component="div">
-                              {product?.price}
+                            <Typography gutterBottom>
+                              Price: {product?.price}
+                              ৳
                             </Typography>
-                            <Typography gutterBottom component="div">
-                              {product?.average_rating}
-                            </Typography>
+                            <Rating name="read-only" value={product?.average_rating} readOnly />
                             <Typography variant="body2" color="text.secondary">
                               {product?.description}
                               {product?.description?.length > 0 ? product?.description?.slice(0, 100).concat('...') : product?.description?.slice(0, 35).concat('...')}
