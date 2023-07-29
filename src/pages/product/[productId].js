@@ -1,7 +1,8 @@
 import RootLayout from '@/components/layouts/RootLayout'
 import { useRouter } from 'next/router';
-import { Box, ButtonBase, Container, Divider, Grid, Paper, Typography } from '@mui/material';
+import { Avatar, Box, ButtonBase, Container, Divider, Grid, List, ListItem, ListItemAvatar, ListItemText, Paper, Rating, Typography } from '@mui/material';
 import styled from '@emotion/styled';
+import ImageIcon from '@mui/icons-material/Image';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -36,38 +37,56 @@ const ProductDetailsPage = ({ product }) => {
                             <Typography variant="h4" gutterBottom>
                                 {product?.product_name}
                             </Typography>
-                            <Typography gutterBottom variant="h5" pb={1}>
+                            <Typography gutterBottom variant="h5">
                                 Category:{product?.category}
                             </Typography>
-                            <Typography gutterBottom variant="h6" pb={1}>
+                            <Typography gutterBottom>
                                 Status: {product?.status}
                             </Typography>
-                            <Typography variant="h6" gutterBottom pb={1}>
+                            <Typography variant="h6" gutterBottom>
                                 Total Price: {product?.price}
                                 ৳
                             </Typography>
-                            <Typography variant="h6" gutterBottom pb={1}>
-                                Individual Rating: {product?.individual_rating}
+                            <Typography component="legend">
+                                Individual Rating:
                             </Typography>
-                            <Typography variant="h6" gutterBottom pb={1}>
-                                Average Rating: {product?.average_rating}
+                            <Rating name="read-only" value={product?.individual_rating} readOnly />
+                            <Typography component="legend">
+                                Average Rating:
                             </Typography>
+                            <Rating name="read-only" value={product?.average_rating} readOnly />
                             <Divider />
+                            <Typography variant="h6" align="justify" gutterBottom >
+                                Description:
+                            </Typography>
                             <Typography variant="body1" align="justify" gutterBottom >
                                 Description: {product?.description}
                             </Typography>
                             <Divider />
-                            <Typography variant="h5" gutterBottom pb={1}>
+                            <Typography variant="h6" gutterBottom>
                                 Reviews:
                             </Typography>
-                            {
-                                product?.reviews?.map((review) => (
-                                    <Typography variant="body2" gutterBottom key={review?.comment}>
-                                        #{review?.comment}
-                                    </Typography>
+                            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                                {
+                                    product?.reviews?.map((review) => (
+                                        <Box key={review?.comment}>
+                                            <ListItem alignItems="flex-start">
+                                                <ListItemAvatar>
+                                                    <Avatar>
+                                                        <ImageIcon />
+                                                    </Avatar>
+                                                </ListItemAvatar>
+                                                <ListItemText
+                                                    primary={review?.comment}
+                                                />
+                                            </ListItem>
+                                            <Divider variant="inset" component="li" />
+                                        </Box>
 
-                                ))
-                            }
+                                    ))
+                                }
+
+                            </List>
 
                         </Box>
                     </Grid>
@@ -78,7 +97,6 @@ const ProductDetailsPage = ({ product }) => {
 }
 
 export default ProductDetailsPage
-
 
 ProductDetailsPage.getLayout = function getLayout(page) {
     return (

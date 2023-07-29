@@ -71,13 +71,36 @@ export default function MenuAppBar() {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Processor</MenuItem>
-              <MenuItem onClick={handleClose}>Motherboard</MenuItem>
-              <MenuItem onClick={handleClose}>RAM</MenuItem>
-              <MenuItem onClick={handleClose}>Power Supply Unit</MenuItem>
-              <MenuItem onClick={handleClose}>Storage Device</MenuItem>
-              <MenuItem onClick={handleClose}>Monitor</MenuItem>
-              <MenuItem onClick={handleClose}>Others</MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link href={`/product_by_category/Processor`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Processor
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link href={`/product_by_category/Motherboard`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Motherboard
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link href={`/product_by_category/RAM`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  RAM
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link href={`/product_by_category/Power Supply Unit`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Power Supply Unit
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link href={`/product_by_category/Storage Device`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Storage Device
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link href={`/product_by_category/Monitor`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Monitor
+                </Link>
+              </MenuItem>
             </Menu>
             <Button color="inherit" variant="outlined">
               Pc Builder
