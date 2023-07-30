@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import GoogleIcon from '@mui/icons-material/Google';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { Button } from '@mui/material';
 import RootLayout from '@/components/layouts/RootLayout';
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 const loginPage = () => {
 
@@ -23,11 +23,11 @@ const loginPage = () => {
                     <Typography variant="h3" align="center" pb={6}>
                         Login
                     </Typography>
-                    <Button variant="outlined" color="warning" size="large" fullWidth startIcon={<GoogleIcon fontSize="large" />}
-                        onClick={() => signIn('google', {
-                            callbackUrl: 'http://localhost:3000/'
-                        })}>
-                        Log In With Google
+                    <Button variant="outlined" color="warning" size="large" fullWidth startIcon={<GitHubIcon fontSize="large" />}
+                        onClick={() => signIn('github', {
+                            callbackUrl: 'https://simple-pc-builder-client.vercel.app/'
+                        })} >
+                        Log In With Github
                     </Button>
                 </Box>
             </Container>

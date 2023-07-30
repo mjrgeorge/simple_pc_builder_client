@@ -1,6 +1,6 @@
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import GoogleIcon from '@mui/icons-material/Google';
-import { signIn, signOut } from "next-auth/react"
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { signOut } from "next-auth/react"
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import { Box, CssBaseline } from "@mui/material";
@@ -101,11 +101,11 @@ export default function MenuAppBar() {
             <MenuItem>
               {
                 !session?.user &&
-                <Button color="inherit" variant="outlined" startIcon={<GoogleIcon color="error" />} onClick={() => signIn('google', {
-                  callbackUrl: 'http://localhost:3000/'
-                })} >
-                  Login
-                </Button>
+                <Link href={`/login`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <Button color="inherit" variant="outlined" startIcon={<GitHubIcon />} >
+                    Login
+                  </Button>
+                </Link>
               }
               {
                 session?.user &&
@@ -190,11 +190,11 @@ export default function MenuAppBar() {
               </Link>
               {
                 !session?.user &&
-                <Button color="inherit" variant="outlined" startIcon={<GoogleIcon color="error" />} onClick={() => signIn('google', {
-                  callbackUrl: 'http://localhost:3000/'
-                })} >
-                  Login
-                </Button>
+                <Link href={`/login`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <Button color="inherit" variant="outlined" startIcon={<GitHubIcon />} >
+                    Login
+                  </Button>
+                </Link>
               }
               {
                 session?.user &&
