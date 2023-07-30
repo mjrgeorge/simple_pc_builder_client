@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-key */
+import CategorySection from '@/components/CategorySection';
 import RootLayout from '@/components/layouts/RootLayout';
 import { Box, Button, CardActionArea, CardActions, Grid, Rating } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -8,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
 const HomePage = ({ allProducts }) => {
+
   return (
     <Box>
       {
@@ -72,12 +74,12 @@ const HomePage = ({ allProducts }) => {
           )
           :
           (
-            <Typography variant="body2" color="red">
+            <Typography variant="h2" color="red" align='center' p={6}>
               Something went wrong!
             </Typography>
           )
       }
-
+      <CategorySection />
     </Box>
   );
 };

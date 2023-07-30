@@ -8,9 +8,12 @@ import { Button, Container, ListItemText, Paper, Stack } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import { useRouter } from "next/router";
 import CardItem from "./CardItem";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAlertMessageContent } from "@/redux/cart/cartSlice";
+import AlertDialogMessage from "@/components/AlertDialogMessage";
 
 const PcBuilderPage = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const { products } = useSelector((state) => state.cart);
 
@@ -25,6 +28,22 @@ const PcBuilderPage = () => {
   const isStorageDevice = products.filter(product => product.category === 'Storage Device')?.length > 0;
   const isMonitor = products.filter(product => product.category === 'Monitor')?.length > 0;
 
+  // ALERT MESSAGE ACTION START
+  const [alertOpen, setAlertOpen] = React.useState(false);
+
+  const handleAlertClick = () => {
+    setAlertOpen(true);
+  };
+  const handleAlertClose = () => {
+    setAlertOpen(false);
+  };
+  // ALERT MESSAGE ACTION END
+
+  const handlePcBuilder = () => {
+    dispatch(setAlertMessageContent('Successfully Completed'));
+    handleAlertClick();
+  }
+
   return (
     <Container maxWidth="md">
       <Paper variant="outlined" sx={{ p: 3 }} >
@@ -35,7 +54,7 @@ const PcBuilderPage = () => {
           >
             PC Builder
           </Typography>
-          <Button variant="contained" color="error" disabled={!(isProcessor === true && isMotherboard === true && isRAM === true && isPowerSupplyUnit === true && isStorageDevice === true && isMonitor === true)}>Add To Builder</Button>
+          <Button variant="contained" color="error" disabled={!(isProcessor === true && isMotherboard === true && isRAM === true && isPowerSupplyUnit === true && isStorageDevice === true && isMonitor === true)} onClick={handlePcBuilder}>Add To Builder</Button>
         </Stack>
         <List
           sx={{
@@ -194,6 +213,8 @@ const PcBuilderPage = () => {
           <Divider />
         </List>
       </Paper>
+      {/* ALERT MESSAGE SHOW */}
+      <AlertDialogMessage handleAlertClose={handleAlertClose} alertOpen={alertOpen} />
     </Container >
   )
 }
